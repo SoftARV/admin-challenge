@@ -1,21 +1,20 @@
 <div>
+  <form [formGroup]="userForm" (ngSubmit)="nextStep()">
+    <div>
+      <input formControlName="name" type="text">
+      <label for="">Name</label>
+    </div>
 
-  <div>
-    <input type="text">
-    <label for="">Name</label>
-  </div>
+    <div>
+      <input formControlName="lastname" type="text">
+      <label for="">Last Name</label>
+    </div>
 
-  <div>
-    <input type="text">
-    <label for="">Last Name</label>
-  </div>
+    <div>
+      <input formControlName="email" type="email">
+      <label for="">Email</label>
+    </div>
 
-  <div>
-    <input type="text">
-    <label for="">Email</label>
-  </div>
-
-  <button>Next</button>
-
-
+    <button type="submit">Next</button>
+  </form>
 </div>
