@@ -1,6 +1,6 @@
 interface User {
-  name: string;
-  lastname: string;
+  firstName: string;
+  lastName: string;
   email: string;
   permissions?: number[];
 }

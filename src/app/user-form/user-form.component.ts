@@ -25,8 +25,8 @@ export class UserFormComponent implements OnInit {
   public initForm() {
     let user: User = this.user.getUser();
     this.userForm = this.formBuilder.group({
-      name: [user.name, [Validators.required]],
-      lastname: [user.lastname, [Validators.required]],
+      firstName: [user.firstName, [Validators.required]],
+      lastName: [user.lastName, [Validators.required]],
       email: [user.email, [Validators.required, Validators.email]]
     });
   }
@@ -34,13 +34,13 @@ export class UserFormComponent implements OnInit {
   nextStep() {
     if (this.userForm.valid) {
       let user: User = {
-        name: this.userForm.get("name").value,
-        lastname: this.userForm.get("lastname").value,
+        firstName: this.userForm.get("firstName").value,
+        lastName: this.userForm.get("lastName").value,
         email: this.userForm.get("email").value
       };
 
       this.user.setUser(user);
-      // this.router.navigate([""]);
+      this.router.navigate(["permissions"]);
     }
   }
 }
