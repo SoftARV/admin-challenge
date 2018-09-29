@@ -28,6 +28,9 @@ export class PermissionsFormComponent implements OnInit {
   }
 
   nextStep() {
-    console.log(this.userData);
+    if (this.userData.permissions.length !== 0) {
+      this.user.setUserPermissions(this.userData.permissions);
+      this.router.navigate(["confirm"]);
+    }
   }
 }

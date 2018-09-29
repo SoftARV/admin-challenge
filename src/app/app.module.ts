@@ -11,9 +11,10 @@ import { PermissionsFormComponent } from "./permissions-form/permissions-form.co
 
 import { UserService } from "./shared/user/user.service";
 import { MaterialModule } from "./shared/material.module";
+import { ConfirmationFormComponent } from './confirmation-form/confirmation-form.component';
 
 @NgModule({
-  declarations: [AppComponent, UserFormComponent, PermissionsFormComponent],
+  declarations: [AppComponent, UserFormComponent, PermissionsFormComponent, ConfirmationFormComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
