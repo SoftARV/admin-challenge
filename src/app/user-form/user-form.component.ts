@@ -16,11 +16,11 @@ export class UserFormComponent implements OnInit {
     private user: UserService,
     private formBuilder: FormBuilder,
     private router: Router
-  ) {}
-
-  ngOnInit() {
+  ) {
     this.initForm();
   }
+
+  ngOnInit() {}
 
   @HostListener("window:beforeunload", ["$event"])
   reloadHandler(event: Event) {

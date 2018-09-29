@@ -10,11 +10,17 @@ import { UserFormComponent } from "./user-form/user-form.component";
 import { PermissionsFormComponent } from "./permissions-form/permissions-form.component";
 
 import { UserService } from "./shared/user/user.service";
+import { RoleService } from "./shared/role/role.service";
 import { MaterialModule } from "./shared/material.module";
-import { ConfirmationFormComponent } from './confirmation-form/confirmation-form.component';
+import { ConfirmationFormComponent } from "./confirmation-form/confirmation-form.component";
 
 @NgModule({
-  declarations: [AppComponent, UserFormComponent, PermissionsFormComponent, ConfirmationFormComponent],
+  declarations: [
+    AppComponent,
+    UserFormComponent,
+    PermissionsFormComponent,
+    ConfirmationFormComponent
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -23,7 +29,7 @@ import { ConfirmationFormComponent } from './confirmation-form/confirmation-form
     MaterialModule,
     AppRoutingModule
   ],
-  providers: [UserService],
+  providers: [UserService, RoleService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

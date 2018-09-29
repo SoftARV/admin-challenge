@@ -1,17 +1,25 @@
 <div>
   <div>
     <span>User</span>
-    <span></span>
+    <span>{{userData.firstName}} {{userData.lastName}}</span>
   </div>
   <div>
     <span>Email</span>
-    <span></span>
+    <span>{{userData.email}}</span>
   </div>
   <div>
     <span>Roles</span>
-    <span></span>
+    <div *ngIf="roles">
+      <div *ngFor="let role of roles">
+        <span>{{role.name}}</span>
+      </div>
+    </div>
+
   </div>
 
-
+  <div>
+    <button (click)="goBack()">Back</button>
+    <button>Create</button>
+  </div>
 
 </div>

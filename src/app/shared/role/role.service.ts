@@ -7,21 +7,24 @@ import { USER_ROLES_URL } from "../constants";
   providedIn: "root"
 })
 export class RoleService {
-  private roles: Role[];
-
   constructor(private http: HttpClient) {}
 
   public async getRoles(): Promise<Role[]> {
     let roles = await this.http.get<Role[]>(USER_ROLES_URL).toPromise<Role[]>();
-    this.roles = roles;
     return roles;
   }
 
-  public getRoleName(id: number) {
-    console.log(
-      this.roles.find(role => {
-        return role.id === id;
-      }).name
-    );
+  public async getRoleName(ids: number[]): Promise<Role[]> {
+    let roles = await this.getRoles();
+    roles = roles.filter(value => {
+      let result: boolean = false;
+      for (let i = 0; i < ids.length; i++) {
+        if (value.id === ids[i]) {
+          result = true;
+        }
+      }
+      return result;
+    });
+    return roles;
   }
 }
