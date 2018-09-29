@@ -35,4 +35,9 @@ export class ConfirmationFormComponent implements OnInit {
   goBack() {
     this.router.navigate(["permission"]);
   }
+
+  createUser() {
+    this.user.saveUser();
+    this.router.navigate(["new-user"]);
+  }
 }

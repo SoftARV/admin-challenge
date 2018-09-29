@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 
-import { USER_ROLES_URL } from "../constants";
+import { USER_POST_URL } from "../constants";
 
 @Injectable({
   providedIn: "root"
@@ -41,6 +41,11 @@ export class UserService {
     }
   }
 
+  private resetUser() {
+    localStorage.clear();
+    this.initUser();
+  }
+
   public getUser() {
     return this.user;
   }
@@ -75,7 +80,13 @@ export class UserService {
     localStorage.setItem("permissions", this.user.permissions.toString());
   }
 
-  public saveUser() {
-    // HTTP request to save user
+  public async saveUser() {
+    try {
+      await this.http.post(USER_POST_URL, this.user);
+    } catch (err) {
+      console.log(err);
+      return;
+    }
+    this.resetUser();
   }
 }
