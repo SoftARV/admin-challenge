@@ -10,19 +10,24 @@ import { UserService } from "../shared/user/user.service";
 })
 export class PermissionsFormComponent implements OnInit {
   public userData: User;
-  public rolesSelected: number[];
-  public roles;
+  public roles: Roles;
 
-  constructor(private user: UserService, private router: Router) {
-    this.roles = this.user.getRoles();
-    console.log(this.roles);
-  }
+  constructor(private user: UserService, private router: Router) {}
 
   ngOnInit() {
+    this.initData();
+  }
+
+  async initData() {
     this.userData = this.user.getUser();
+    this.roles = await this.user.getRoles();
   }
 
   goBack() {
     this.router.navigate(["new-user"]);
+  }
+
+  nextStep() {
+    console.log(this.userData);
   }
 }
