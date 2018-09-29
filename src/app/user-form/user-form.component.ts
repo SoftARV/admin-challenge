@@ -33,13 +33,10 @@ export class UserFormComponent implements OnInit {
 
   nextStep() {
     if (this.userForm.valid) {
-      let user: User = {
-        firstName: this.userForm.get("firstName").value,
-        lastName: this.userForm.get("lastName").value,
-        email: this.userForm.get("email").value
-      };
+      this.user.setUserName(this.userForm.get("firstName").value);
+      this.user.setUserLastName(this.userForm.get("lastName").value);
+      this.user.setUserEmail(this.userForm.get("email").value);
 
-      this.user.setUser(user);
       this.router.navigate(["permissions"]);
     }
   }

@@ -23,20 +23,23 @@ export class UserService {
   }
 
   public setUser(user: User) {
-    this.user = user;
+    this.setUserName(user.firstName);
+    this.setUserLastName(user.lastName);
+    this.setUserEmail(user.email);
+    this.setUserPermissions(user.permissions);
   }
 
-  // public setUserName(name: string) {
-  //   this.user.firstName = name;
-  // }
+  public setUserName(name: string) {
+    this.user.firstName = name;
+  }
 
-  // public setUserLastName(lastname: string) {
-  //   this.user.lastName = lastname;
-  // }
+  public setUserLastName(lastname: string) {
+    this.user.lastName = lastname;
+  }
 
-  // public setUserEmail(email: string) {
-  //   this.user.email = email;
-  // }
+  public setUserEmail(email: string) {
+    this.user.email = email;
+  }
 
   public setUserPermissions(permissions: number[]) {
     this.user.permissions = permissions;
@@ -46,9 +49,9 @@ export class UserService {
     // HTTP request to save user
   }
 
-  public async getRoles() {
+  public async getRoles(): Promise<Roles> {
     // HTTP request to get user roles list
-    let roles = await this.http.get<[]>(USER_ROLES_URL).toPromise<[]>();
+    let roles = await this.http.get<Roles>(USER_ROLES_URL).toPromise<Roles>();
 
     return roles;
   }
