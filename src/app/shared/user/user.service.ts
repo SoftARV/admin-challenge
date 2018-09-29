@@ -10,12 +10,34 @@ export class UserService {
   private user: User;
 
   constructor(private http: HttpClient) {
+    this.initUser();
+  }
+
+  private initUser() {
     this.user = {
       firstName: "",
       lastName: "",
       email: "",
       permissions: []
     };
+    if (localStorage.getItem("firstName") !== null) {
+      this.user.firstName = localStorage.getItem("firstName");
+    }
+    if (localStorage.getItem("lastName") !== null) {
+      this.user.lastName = localStorage.getItem("lastName");
+    }
+    if (localStorage.getItem("email") !== null) {
+      this.user.email = localStorage.getItem("email");
+    }
+    if (localStorage.getItem("permissions") !== null) {
+      let permissions = localStorage
+        .getItem("permissions")
+        .split(",")
+        .map(value => {
+          return parseInt(value);
+        });
+      this.user.permissions.push(...permissions);
+    }
   }
 
   public getUser() {
@@ -43,6 +65,13 @@ export class UserService {
 
   public setUserPermissions(permissions: number[]) {
     this.user.permissions = permissions;
+  }
+
+  public saveUserLocal() {
+    localStorage.setItem("firstName", this.user.firstName);
+    localStorage.setItem("lastName", this.user.lastName);
+    localStorage.setItem("email", this.user.email);
+    localStorage.setItem("permissions", this.user.permissions.toString());
   }
 
   public saveUser() {

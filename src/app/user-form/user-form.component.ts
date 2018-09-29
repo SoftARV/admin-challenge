@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, HostListener } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 
@@ -22,6 +22,11 @@ export class UserFormComponent implements OnInit {
     this.initForm();
   }
 
+  @HostListener("window:beforeunload", ["$event"])
+  reloadHandler(event: Event) {
+    this.user.saveUserLocal();
+  }
+
   public initForm() {
     let user: User = this.user.getUser();
     this.userForm = this.formBuilder.group({
@@ -37,7 +42,7 @@ export class UserFormComponent implements OnInit {
       this.user.setUserLastName(this.userForm.get("lastName").value);
       this.user.setUserEmail(this.userForm.get("email").value);
 
-      this.router.navigate(["permissions"]);
+      this.router.navigate(["permission"]);
     }
   }
 }

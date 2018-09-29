@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, HostListener } from "@angular/core";
 import { Router } from "@angular/router";
 
 import { UserService } from "../shared/user/user.service";
@@ -12,10 +12,15 @@ export class PermissionsFormComponent implements OnInit {
   public userData: User;
   public roles: Roles;
 
-  constructor(private user: UserService, private router: Router) {}
-
-  ngOnInit() {
+  constructor(private user: UserService, private router: Router) {
     this.initData();
+  }
+
+  ngOnInit() {}
+
+  @HostListener("window:beforeunload", ["$event"])
+  reloadHandler(event: Event) {
+    this.user.saveUserLocal();
   }
 
   async initData() {

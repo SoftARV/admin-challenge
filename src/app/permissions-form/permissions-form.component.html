@@ -3,7 +3,7 @@
     <h1>{{this.userData.firstName}} {{this.userData.lastName}}</h1>
   </div>
   <div>
-    <mat-select placeholder="Roles" [(value)]="userData.permissions" multiple>
+    <mat-select *ngIf="roles" placeholder="Roles" [(value)]="userData.permissions" multiple>
       <div *ngFor="let role of roles">
         <mat-option [value]="role.id">{{role.name}}</mat-option>
       </div>
