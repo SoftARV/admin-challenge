@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from "@angular/core";
 
 @Component({
-  selector: 'app-confirmation-form',
-  templateUrl: './confirmation-form.component.html',
-  styleUrls: ['./confirmation-form.component.css']
+  selector: "app-confirmation-form",
+  templateUrl: "./confirmation-form.component.html",
+  styleUrls: ["./confirmation-form.component.scss"]
 })
 export class ConfirmationFormComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

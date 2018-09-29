@@ -6,7 +6,7 @@ import { ConfirmationFormComponent } from "./confirmation-form/confirmation-form
 
 const routes: Routes = [
   { path: "new-user", component: UserFormComponent },
-  { path: "permissions", component: PermissionsFormComponent },
+  { path: "permission", component: PermissionsFormComponent },
   { path: "confirm", component: ConfirmationFormComponent },
   { path: "", redirectTo: "/new-user", pathMatch: "full" }
 ];
