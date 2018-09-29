@@ -8,6 +8,7 @@ import { USER_ROLES_URL } from "../constants";
 })
 export class UserService {
   private user: User;
+  private roles: Role[];
 
   constructor(private http: HttpClient) {
     this.initUser();
@@ -76,12 +77,5 @@ export class UserService {
 
   public saveUser() {
     // HTTP request to save user
-  }
-
-  public async getRoles(): Promise<Roles> {
-    // HTTP request to get user roles list
-    let roles = await this.http.get<Roles>(USER_ROLES_URL).toPromise<Roles>();
-
-    return roles;
   }
 }
