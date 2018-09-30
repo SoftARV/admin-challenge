@@ -10,10 +10,10 @@ import { ModalService } from "../shared/modal.service";
     trigger("dialog", [
       transition("void => *", [
         style({ transform: "scale3d(.3, .3, .3)" }),
-        animate(100)
+        animate(200)
       ]),
       transition("* => void", [
-        animate(100, style({ transform: "scale3d(.0, .0, .0)" }))
+        animate(200, style({ transform: "scale3d(.0, .0, .0)" }))
       ])
     ])
   ]
