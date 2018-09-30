@@ -1,25 +1,25 @@
-<div>
-  <div>
-    <span>User</span>
-    <span>{{userData.firstName}} {{userData.lastName}}</span>
+<div class="container">
+  <div class="title">
+    <h1>Confirm your selection</h1>
   </div>
   <div>
-    <span>Email</span>
-    <span>{{userData.email}}</span>
+    <h3>User</h3>
+    <p>{{userData.firstName}} {{userData.lastName}}</p>
   </div>
   <div>
-    <span>Roles</span>
+    <h3>Email</h3>
+    <p>{{userData.email}}</p>
+  </div>
+  <div>
+    <h3>Roles</h3>
     <div *ngIf="roles">
       <div *ngFor="let role of roles">
-        <span>{{role.name}}</span>
+        <p>- {{role.name}}</p>
       </div>
     </div>
-
   </div>
-
-  <div>
+  <div class="button-container">
     <button (click)="goBack()">Back</button>
     <button (click)="createUser()">Create</button>
   </div>
-
 </div>
