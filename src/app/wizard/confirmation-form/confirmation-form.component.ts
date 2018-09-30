@@ -1,7 +1,8 @@
 import { Component, OnInit, HostListener } from "@angular/core";
 import { Router } from "@angular/router";
-import { UserService } from "../shared/user/user.service";
-import { RoleService } from "../shared/role/role.service";
+import { UserService } from "../../shared/user/user.service";
+import { RoleService } from "../../shared/role/role.service";
+import { ModalService } from "../../shared/modal.service";
 
 @Component({
   selector: "app-confirmation-form",
@@ -15,6 +16,7 @@ export class ConfirmationFormComponent implements OnInit {
   constructor(
     private user: UserService,
     private role: RoleService,
+    private modal: ModalService,
     private router: Router
   ) {}
 
@@ -33,11 +35,12 @@ export class ConfirmationFormComponent implements OnInit {
   }
 
   goBack() {
-    this.router.navigate(["permission"]);
+    this.router.navigate(["wizard/permission"]);
   }
 
   createUser() {
     this.user.saveUser();
-    this.router.navigate(["new-user"]);
+    this.router.navigate([""]);
+    this.modal.destroy();
   }
 }

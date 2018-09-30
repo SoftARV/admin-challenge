@@ -3,9 +3,11 @@
     <h1>Assign roles to the user</h1>
   </div>
   <div class="user-name">
-    <h2>{{this.userData.firstName}} {{this.userData.lastName}}</h2>
+    <h2>Name of the user</h2>
+    <p>{{this.userData.firstName}} {{this.userData.lastName}}</p>
   </div>
   <div class="select-container">
+    <h2>Select the roles to assign</h2>
     <mat-select id="select" *ngIf="roles" placeholder="Roles" [(value)]="userData.permissions" multiple>
       <div *ngFor="let role of roles">
         <mat-option [value]="role.id">{{role.name}}</mat-option>

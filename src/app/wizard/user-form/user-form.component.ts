@@ -7,7 +7,7 @@ import {
 } from "@angular/forms";
 import { Router } from "@angular/router";
 
-import { UserService } from "../shared/user/user.service";
+import { UserService } from "../../shared/user/user.service";
 
 @Component({
   selector: "app-user-form",
@@ -60,7 +60,7 @@ export class UserFormComponent implements OnInit {
       this.user.setUserLastName(this.userForm.get("lastName").value);
       this.user.setUserEmail(this.userForm.get("email").value);
 
-      this.router.navigate(["permission"]);
+      this.router.navigate(["wizard/permission"]);
     }
   }
 }

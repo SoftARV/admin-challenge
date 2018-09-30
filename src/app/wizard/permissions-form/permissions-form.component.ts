@@ -1,8 +1,8 @@
 import { Component, OnInit, HostListener } from "@angular/core";
 import { Router } from "@angular/router";
 
-import { UserService } from "../shared/user/user.service";
-import { RoleService } from "../shared/role/role.service";
+import { UserService } from "../../shared/user/user.service";
+import { RoleService } from "../../shared/role/role.service";
 
 @Component({
   selector: "app-permissions-form",
@@ -34,13 +34,13 @@ export class PermissionsFormComponent implements OnInit {
   }
 
   goBack() {
-    this.router.navigate(["new-user"]);
+    this.router.navigate(["wizard/new-user"]);
   }
 
   nextStep() {
     if (this.userData.permissions.length !== 0) {
       this.user.setUserPermissions(this.userData.permissions);
-      this.router.navigate(["confirm"]);
+      this.router.navigate(["wizard/confirm"]);
     }
   }
 }
