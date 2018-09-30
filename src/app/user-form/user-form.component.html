@@ -1,20 +1,23 @@
-<div>
-  <form [formGroup]="userForm" (ngSubmit)="nextStep()">
-    <div>
-      <input formControlName="firstName" type="text">
-      <label for="">Name</label>
+<div class="container">
+  <h1 class="title">Create a new user</h1>
+  <form class="user-form" [formGroup]="userForm" (ngSubmit)="nextStep()">
+    <div class="input-field">
+      <h3>First Name</h3>
+      <input placeholder="John..." formControlName="firstName" type="text" required>
+      <p *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">* Is requiared</p>
     </div>
-
-    <div>
-      <input formControlName="lastName" type="text">
-      <label for="">Last Name</label>
+    <div class="input-field">
+      <h3>Last Name</h3>
+      <input placeholder="Doe..." formControlName="lastName" type="text" required>
+      <p *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">* Is requiared</p>
     </div>
-
-    <div>
-      <input formControlName="email" type="email">
-      <label for="">Email</label>
+    <div class="input-field">
+      <h3>Email</h3>
+      <input placeholder="user@mail.com..." formControlName="email" type="email" required>
+      <p *ngIf="email.invalid && (email.dirty || email.touched)">* A valid email Requiared</p>
     </div>
-
-    <button type="submit">Next</button>
+    <div class="button-container">
+      <button type="submit">Next</button>
+    </div>
   </form>
 </div>

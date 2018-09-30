@@ -1,5 +1,10 @@
 import { Component, OnInit, HostListener } from "@angular/core";
-import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import {
+  FormGroup,
+  FormControl,
+  FormBuilder,
+  Validators
+} from "@angular/forms";
 import { Router } from "@angular/router";
 
 import { UserService } from "../shared/user/user.service";
@@ -29,11 +34,24 @@ export class UserFormComponent implements OnInit {
 
   public initForm() {
     let user: User = this.user.getUser();
-    this.userForm = this.formBuilder.group({
-      firstName: [user.firstName, [Validators.required]],
-      lastName: [user.lastName, [Validators.required]],
-      email: [user.email, [Validators.required, Validators.email]]
+    this.userForm = new FormGroup({
+      firstName: new FormControl(user.firstName, Validators.required),
+      lastName: new FormControl(user.lastName, Validators.required),
+      email: new FormControl(user.email, [
+        Validators.required,
+        Validators.email
+      ])
     });
+  }
+
+  get firstName() {
+    return this.userForm.get("firstName");
+  }
+  get lastName() {
+    return this.userForm.get("lastName");
+  }
+  get email() {
+    return this.userForm.get("email");
   }
 
   nextStep() {
