@@ -1,15 +1,18 @@
-<div>
-  <div>
-    <h1>{{this.userData.firstName}} {{this.userData.lastName}}</h1>
+<div class="container">
+  <div class="title">
+    <h1>Assign roles to the user</h1>
   </div>
-  <div>
-    <mat-select *ngIf="roles" placeholder="Roles" [(value)]="userData.permissions" multiple>
+  <div class="user-name">
+    <h2>{{this.userData.firstName}} {{this.userData.lastName}}</h2>
+  </div>
+  <div class="select-container">
+    <mat-select id="select" *ngIf="roles" placeholder="Roles" [(value)]="userData.permissions" multiple>
       <div *ngFor="let role of roles">
         <mat-option [value]="role.id">{{role.name}}</mat-option>
       </div>
     </mat-select>
   </div>
-  <div>
+  <div class="button-container">
     <button (click)="goBack()">Back</button>
     <button (click)="nextStep()">Next</button>
   </div>
